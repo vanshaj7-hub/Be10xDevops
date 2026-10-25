@@ -1,0 +1,12 @@
+{
+  "name": "spend-sight",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:dashboard": "node --test tests/dashboard.test.js",
+    "prebuild": "npm run test:dashboard",
+    "build": "echo \"Build step not configured yet. Dashboard checks pass before build.\""
+  }
+}

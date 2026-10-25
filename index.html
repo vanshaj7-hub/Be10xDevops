@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spend Sight</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">S</div>
+          <div>
+            <h1>Spend Sight</h1>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active">Dashboard</button>
+          <button class="nav-item">Accounts</button>
+          <button class="nav-item">Transactions</button>
+          <button class="nav-item">Budgets</button>
+          <button class="nav-item">Goals</button>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h2>Personal Finance Dashboard</h2>
+          </div>
+          <div class="actions">
+            <button class="primary-btn" id="add-transaction-btn">+ Add transaction</button>
+          </div>
+        </header>
+
+        <section class="kpis">
+          <article class="kpi-card accent-blue">
+            <p>Total balance</p>
+            <h3 id="total-balance">₹0.00</h3>
+            <small id="balance-meta">Across 0 accounts</small>
+          </article>
+          <article class="kpi-card accent-green">
+            <p>Monthly income</p>
+            <h3 id="monthly-income">₹0.00</h3>
+          </article>
+          <article class="kpi-card accent-red">
+            <p>Monthly expenses</p>
+            <h3 id="monthly-expenses">₹0.00</h3>
+          </article>
+          <article class="kpi-card accent-purple">
+            <p>Net cash flow</p>
+            <h3 id="monthly-net">₹0.00</h3>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel spending-panel">
+            <div class="panel-header">
+              <h3>Spending by category</h3>
+            </div>
+            <div id="category-breakdown" class="category-list"></div>
+          </article>
+
+          <article class="panel bills-panel">
+            <div class="panel-header">
+              <h3>Upcoming bills</h3>
+            </div>
+            <div id="upcoming-bills" class="list-stack"></div>
+          </article>
+        </section>
+
+        <section class="content-grid lower-grid">
+          <article class="panel">
+            <div class="panel-header">
+              <h3>Recent transactions</h3>
+            </div>
+            <div id="recent-transactions" class="list-stack transaction-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h3>Budget & goals</h3>
+            </div>
+            <div id="budget-goals" class="list-stack progress-list"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="transaction-dialog">
+      <form method="dialog" id="transaction-form" class="transaction-form" onsubmit="return false;">
+        <div class="dialog-header">
+          <h3>Add transaction</h3>
+          <button type="button" class="close-btn" id="close-transaction-dialog">×</button>
+        </div>
+
+        <div class="field-grid">
+          <label>
+            <span>Type</span>
+            <select id="type">
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+              <option value="transfer">Transfer</option>
+              <option value="adjustment">Adjustment</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Account</span>
+            <select id="accountId"></select>
+          </label>
+
+          <label>
+            <span>Category</span>
+            <input id="category" type="text" value="Uncategorized" />
+          </label>
+
+          <label>
+            <span>Amount</span>
+            <input id="amount" type="number" min="0" step="0.01" value="0" />
+          </label>
+
+          <label>
+            <span>Date</span>
+            <input id="date" type="date" />
+          </label>
+
+          <label>
+            <span>Merchant</span>
+            <input id="merchant" type="text" value="" />
+          </label>
+        </div>
+
+        <div class="dialog-actions">
+          <button type="button" class="secondary-btn" id="cancel-transaction">Cancel</button>
+          <button type="submit" class="primary-btn">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
